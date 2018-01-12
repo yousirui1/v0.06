@@ -17,7 +17,7 @@ public class ClientMgr : MonoBehaviour {
 	#endregion
 
 	private LoginConect login = null;
-
+	private AreaConect area = null;
 
 	// Use this for initialization
 	void Awake () {
@@ -27,6 +27,11 @@ public class ClientMgr : MonoBehaviour {
 			login = gameObject.AddComponent<LoginConect>();
 		}
 
+		area = GetComponent<AreaConect>();	
+		if(area == null)
+		{
+			area = gameObject.AddComponent<AreaConect>();
+		}
 
 	}
 	
@@ -35,13 +40,13 @@ public class ClientMgr : MonoBehaviour {
 		
 	}
 
-	public void Login()
+	public void SetUrl(string host, int port)
 	{
-		if(login != null)
-		login.onLogin();
-		else
-		Debug.LogError("login null");
+		login.SetUrl (host,port);
 	}
 
-
+	public void CreatRoom()
+	{
+		area.onEnterRoom ();
+	}
 }

@@ -17,7 +17,7 @@ public class PublicUISetPage : UIPage
 
     public override void Awake(GameObject go)
     {
-        this.gameObject.transform.Find("Button (6)").GetComponent<Button>().onClick.AddListener(() =>
+		this.gameObject.transform.Find("content/btn_close").GetComponent<Button>().onClick.AddListener(() =>
         {
             // 隐藏
             Hide();

@@ -57,6 +57,27 @@ public class MainUIPage : UIPage
 		//初始化
 		Init();
          
+		//隐藏按钮
+		this.gameObject.transform.Find("btn_hid").GetComponent<Button>().onClick.AddListener(() =>
+			{
+				//isActive = !isActive;
+				// 隐藏设置按钮
+				//Active_btn(isActive);
+//				
+				isActive = !isActive;
+				Active_btn(isActive);
+				int iActive = isActive == false ? 0 : 1;
+				PlayerPrefs.SetInt("hid", iActive);
+			});
+		
+		this.gameObject.transform.Find("btn_set").GetComponent<Button>().onClick.AddListener(() =>
+			{
+				// 开箱
+				UIPage.ShowPage<PublicUISetPage>();
+			});
+		
+		
+
 		//领取宝箱
         this.gameObject.transform.Find("btn_goldbox").GetComponent<Button>().onClick.AddListener(() =>
         {
@@ -108,6 +129,10 @@ public class MainUIPage : UIPage
 
 		this.gameObject.transform.Find("btn_mode1").GetComponent<Button>().onClick.AddListener(() =>
 		{
+			
+				//向服务器创建房间
+				ClientMgr.Instance().CreatRoom();
+
 				//荣耀对决
 				UIPage.ShowPage<RoomUIMainPage>();
 		});
@@ -151,24 +176,26 @@ public class MainUIPage : UIPage
 		//载入本地数据
         int iActive = PlayerPrefs.GetInt("hid");
         isActive = iActive == 0 ? false : true;
-
+		Active_btn (isActive);
 		//显示数据
        
 		//刷新显示
 		Refresh();
+		if (ConectData.Instance.Uid != "") {
+			//登录服务器
+			ClientMgr.Instance ().SetUrl (Config.host, Config.port);
+		}
  
 	}
 
 	private void Active_btn(bool isActive)
 	{
-		 if (!isActive)
-        {
+		 
             btn_set.SetActive(isActive);
             btn_email.SetActive(isActive);
             btn_activity.SetActive(isActive);
             btn_check.SetActive(isActive);
             btn_rank.SetActive(isActive);
-        }
 	}
 }
 
@@ -234,20 +261,8 @@ this.gameObject.transform.Find("btn_store").GetComponent<Button>().onClick.AddLi
 UIPage.ShowPage<PublicUINotice>("大礼包未完成，敬请期待");
 });
 
-this.gameObject.transform.Find("btn_hid").GetComponent<Button>().onClick.AddListener(() =>
-{
-isActive = !isActive;
-// 隐藏设置按钮
-Active_btn(isActive);
-int iActive = isActive == false ? 0 : 1;
-PlayerPrefs.SetInt("hid", iActive);
-});
 
-this.gameObject.transform.Find("btn_set").GetComponent<Button>().onClick.AddListener(() =>
-{
-// 开箱
-UIPage.ShowPage<PublicUINotice>("大礼包未完成，敬请期待");
-});
+
 
 
 this.gameObject.transform.Find("btn_email").GetComponent<Button>().onClick.AddListener(() =>

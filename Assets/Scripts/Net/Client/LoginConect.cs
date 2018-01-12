@@ -28,16 +28,13 @@ public class LoginConect : MonoBehaviour
 
 	private PomeloClient pClient;
 
-	private AreaConect area = null;
+
+	private string host;
+	private int port;
 
 	// Use this for initialization
 	void Start()
 	{
-		area = GetComponent<AreaConect>();	
-		if(area == null)
-		{
-			area = gameObject.AddComponent<AreaConect>();
-		}
 	}
 
 	// Update is called once per frame
@@ -52,29 +49,37 @@ public class LoginConect : MonoBehaviour
 	private bool isHost = false;
 
 
+	public void SetUrl(string host, int port)
+	{
+		this.host = host;
+		this.port = port;
+		onLogin ();
+	}
 
-	public void onLogin()
+
+	private void onLogin()
 	{
 		if (null == pClient)
 		{
 			
 			pClient = new PomeloClient();
-			pClient.initClient(Config.host, Config.port, () =>
-				{
+			pClient.initClient(host, port, () =>
+			{
 
-					pClient.connect(null, (data) =>
-						{
-							Debug.Log("onLogin"+data);
-							JsonObject userMsg = new JsonObject();
-							userMsg["uid"] = ConectData.Instance.Uid;
-							pClient.request("gate.gateHandler.queryEntry", userMsg, onEntryRequest);
-						});
+				pClient.connect(null, (data) =>
+				{
+						Debug.Log("onLogin"+data);
+						JsonObject userMsg = new JsonObject();
+						userMsg["uid"] = ConectData.Instance.Uid;
+						Debug.Log("uid"+ConectData.Instance.Uid);
+						pClient.request("gate.gateHandler.queryEntry", userMsg, onEntryRequest);
 				});
+			});
 		}
 	}
 
 	//gata服务器返回的数据
-	void onEntryRequest(JsonObject result)
+	private void onEntryRequest(JsonObject result)
 	{
 		Debug.Log ("Entry:"+result);
 		System.Object code = null;
@@ -104,7 +109,7 @@ public class LoginConect : MonoBehaviour
 	}
 
 	//获取connector服务器数据
-	void Entry()
+	private void Entry()
 	{
 		
 		JsonObject userMsg = new JsonObject ();
@@ -114,7 +119,6 @@ public class LoginConect : MonoBehaviour
 					
 				Debug.Log ("Entry" + data);
 				onEnter (data);
-				area.onEnterRoom();
 			});
 		} 
 	}

@@ -76,21 +76,58 @@ public class AreaConect : MonoBehaviour {
 		if (pClient != null)
 		{
 			pClient.on("add", (data) => {
-				Debug.Log("InitNetEvent onAdd");
-				//onUserAdd(data);
+				Debug.Log("InitNetEvent area_add");
+				onAreaAdd(data);
 			});
 
-			pClient.on("onLeave", (data) => {
-				Debug.Log("InitNetEvent onLeave" + data);
-				//onUserLeave(data);
+			pClient.on("leave", (data) => {
+				Debug.Log("InitNetEvent area_leave" + data);
+				onAreaLeave(data);
 			});
 
-			pClient.on("message", (data) =>
+			pClient.on("ready", (data) =>
 			{
-				Debug.Log("InitNetEvent message" +data);
-				//onChatAdd(data);
+				Debug.Log("InitNetEvent area_ready" +data);
+				onAreaReady(data);
 			});
+			pClient.on("invite", (data) =>
+				{
+					Debug.Log("InitNetEvent area_invite" +data);
+					onAreaInvite(data);
+				});
+			pClient.on("onChat", (data) =>
+				{
+					Debug.Log("InitNetEvent area_onChat" +data);
+					onAreaChat(data);
+				});	
 		}
+	}
+
+	private void onAreaAdd(JsonObject jsMsg)
+	{
+
+		//mTaskExecutor.ScheduleTask(new Task(new Action<FrameBuf>(eventObj.onMove), buf));
+		//eventObj.onove(buf);
+	
+	}
+
+	private void onAreaLeave(JsonObject jsMsg)
+	{
+
+	}
+	private void onAreaReady(JsonObject jsMsg)
+	{
+
+	}
+
+	private void onAreaInvite(JsonObject jsMsg)
+	{
+
+	}
+
+	private void onAreaChat(JsonObject jsMsg)
+	{
+
 	}
 
 	

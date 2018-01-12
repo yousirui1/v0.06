@@ -36,10 +36,6 @@ public class RoomUIMainPage : UIPage
 
 
 
-
-		//登录Client
-		ClientMgr.Instance().Login();
-
 		tabControl = this.transform.Find ("tabcontrol").GetComponent<TabControl> () as TabControl;
 
 		tablist.Add (new TabIndex(0,"好友"));

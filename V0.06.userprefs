@@ -1,14 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Net/Client/AreaConect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Viem/UI/MainUI/MainUIPage.cs">
     <Files>
-      <File FileName="Assets/Scripts/Viem/UI/RoomUI/RoomUIMainPage.cs" Line="84" Column="4" />
-      <File FileName="Assets/Scripts/Net/Client/AreaConect.cs" Line="36" Column="16" />
-      <File FileName="Assets/Scripts/Viem/UI/RoomUI/UIFriendItem.cs" Line="34" Column="1" />
-      <File FileName="Assets/Scripts/Val/Val.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Val/ConectData.cs" Line="50" Column="23" />
-      <File FileName="Assets/Scripts/Val/GameData.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Viem/UI/Public/PublicUINotice.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Main.cs" Line="30" Column="10" />
+      <File FileName="Assets/Scripts/Net/Client/LoginConect.cs" Line="120" Column="1" />
+      <File FileName="Assets/Scripts/Net/Http/NetHttp.cs" Line="53" Column="1" />
+      <File FileName="../v0.04/Assets/Script/client/ChatConect.cs" Line="200" Column="5" />
+      <File FileName="Assets/Scripts/Net/Client/AreaConect.cs" Line="47" Column="36" />
+      <File FileName="Assets/Scripts/Tools/NetLog.cs" Line="33" Column="35" />
+      <File FileName="Assets/Scripts/Viem/UI/MainUI/MainUIPage.cs" Line="17" Column="35" />
+      <File FileName="Assets/Scripts/Viem/UI/Public/PublicUISetPage.cs" Line="20" Column="52" />
+      <File FileName="Assets/Scripts/Viem/UI/LoginUI/LoginUIPage.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Viem/UI/LoginUI/LoginQuickUIPage.cs" Line="18" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

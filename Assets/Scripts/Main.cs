@@ -31,9 +31,12 @@ public class Main : MonoBehaviour
             PlayerPrefs.SetInt("hid", 0);
         }
 
-
+		//远程打印
         NetLog.Instance();
+		//定时器
         TimeMgr.Instance().InitTime();
-        //NetMgr.Instance().SetUrl(Config.host, Config.port);
+
+		//登录服务器
+		//ClientMgr.Instance().SetUrl(Config.host, Config.port);
     }
 }
